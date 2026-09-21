@@ -1,0 +1,1095 @@
+/* ==================================================
+   FLX STORE
+   STYLE.CSS
+================================================== */
+
+
+/* ==================================================
+   1. CONFIGURAÇÕES GERAIS
+================================================== */
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inicio,
+#produtos,
+#sobre,
+#contato {
+    scroll-margin-top: 90px;
+}
+
+
+/* ==================================================
+   2. CABEÇALHO
+================================================== */
+
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 8%;
+
+    background-color: rgba(10, 10, 10, 0.96);
+    border-bottom: 1px solid #222;
+
+    backdrop-filter: blur(10px);
+}
+
+header h1 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 5px;
+}
+
+header h1::after {
+    content: "";
+
+    display: block;
+
+    width: 30px;
+    height: 2px;
+
+    margin-top: 6px;
+
+    background-color: #ffffff;
+
+    transition: width 0.3s ease;
+}
+
+header:hover h1::after {
+    width: 55px;
+}
+
+
+/* ==================================================
+   3. MENU
+================================================== */
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+}
+
+nav a {
+    color: #ffffff;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 14px;
+
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #aaa;
+}
+
+nav a.ativo-menu {
+    position: relative;
+
+    color: #ffffff;
+}
+
+nav a.ativo-menu::after {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: -8px;
+
+    width: 100%;
+    height: 1px;
+
+    background-color: #ffffff;
+}
+
+
+/* ==================================================
+   4. MENU MOBILE
+================================================== */
+
+.menu-mobile {
+    display: none;
+
+    padding: 0;
+
+    background: transparent;
+    border: none;
+
+    color: #ffffff;
+
+    font-size: 30px;
+
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   5. BANNER
+================================================== */
+
+.banner {
+    width: 100%;
+
+    overflow: hidden;
+
+    background-color: #050505;
+}
+
+.banner img {
+    display: block;
+
+    width: 100%;
+    height: auto;
+}
+
+
+/* ==================================================
+   6. APRESENTAÇÃO DA MARCA
+================================================== */
+
+.apresentacao {
+    padding: 90px 8%;
+
+    text-align: center;
+
+    background-color: #0a0a0a;
+}
+
+.apresentacao-marca {
+    margin: 0 0 20px;
+
+    color: #777;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 6px;
+}
+
+.apresentacao h2 {
+    margin: 0 auto 25px;
+
+    color: #ffffff;
+
+    font-size: 42px;
+    line-height: 1.15;
+    letter-spacing: 3px;
+}
+
+.apresentacao-texto {
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    color: #999;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   7. LANÇAMENTO 2027
+================================================== */
+
+.lancamento {
+    padding: 35px 20px;
+
+    text-align: center;
+
+    background-color: #0d0d0d;
+
+    border-top: 1px solid #1c1c1c;
+    border-bottom: 1px solid #222;
+}
+
+.lancamento span {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 4px;
+}
+
+.lancamento p {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.botao-lancamento {
+    display: inline-block;
+
+    margin-top: 22px;
+    padding: 13px 28px;
+
+    background-color: transparent;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+}
+
+.botao-lancamento:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+/* ==================================================
+   8. PRODUTOS
+================================================== */
+
+.secao-produtos {
+    padding: 90px 8%;
+
+    text-align: center;
+
+    background-color: #0f0f0f;
+}
+
+.destaque {
+    margin: 0 0 25px;
+
+    color: #888;
+
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 6px;
+
+    text-transform: uppercase;
+}
+
+.secao-produtos h2 {
+    margin: 0 0 40px;
+
+    color: #ffffff;
+
+    font-size: 32px;
+    letter-spacing: 1px;
+}
+
+.descricao-colecao {
+    max-width: 650px;
+
+    margin: -15px auto 45px;
+
+    color: #888;
+
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+}
+
+.produtos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 25px;
+
+    width: 100%;
+    max-width: 1200px;
+
+    margin: 0 auto;
+}
+
+
+/* ==================================================
+   9. CARDS DE PRODUTO
+================================================== */
+
+.produto {
+    position: relative;
+
+    overflow: hidden;
+
+    padding-bottom: 20px;
+
+    text-align: left;
+
+    background-color: #0b0b0b;
+
+    border: 1px solid #1f1f1f;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.produto:hover {
+    transform: translateY(-6px);
+
+    border-color: #555;
+}
+
+.foto-produto {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    height: 350px;
+
+    overflow: hidden;
+
+    background: linear-gradient(
+        145deg,
+        #1d1d1d,
+        #111111
+    );
+
+    border-bottom: 1px solid #292929;
+}
+
+.produto:hover .foto-produto {
+    background: linear-gradient(
+        145deg,
+        #222222,
+        #151515
+    );
+}
+
+.status-produto {
+    display: inline-block;
+
+    padding: 9px 14px;
+
+    background-color: rgba(10, 10, 10, 0.7);
+
+    border: 1px solid #444;
+
+    color: #aaa;
+
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 3px;
+
+    transition: 0.3s ease;
+}
+
+.produto:hover .status-produto {
+    border-color: #888;
+
+    color: #ffffff;
+}
+
+.numero-produto {
+    position: absolute;
+
+    top: 18px;
+    left: 18px;
+
+    z-index: 2;
+
+    color: #777;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: color 0.3s ease;
+}
+
+.produto:hover .numero-produto {
+    color: #ffffff;
+}
+
+.produto h3 {
+    margin: 20px 18px 8px;
+
+    color: #ffffff;
+
+    font-size: 18px;
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+.produto p {
+    margin: 0 18px;
+
+    color: #777;
+
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+
+/* ==================================================
+   10. DIFERENCIAIS
+================================================== */
+
+.diferenciais {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 1px;
+
+    max-width: 1200px;
+
+    margin: 0 auto;
+    padding: 70px 8%;
+
+    background-color: #222;
+}
+
+.diferencial {
+    padding: 40px 30px;
+
+    text-align: left;
+
+    background-color: #0b0b0b;
+
+    transition: background-color 0.3s ease;
+}
+
+.diferencial:hover {
+    background-color: #151515;
+}
+
+.diferencial span {
+    display: block;
+
+    margin-bottom: 30px;
+
+    color: #666;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.diferencial h3 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.diferencial p {
+    margin: 0;
+
+    color: #888;
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* ==================================================
+   11. NOVIDADES
+================================================== */
+
+.novidades {
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background-color: #0d0d0d;
+
+    border-top: 1px solid #222;
+    border-bottom: 1px solid #222;
+
+    color: #ffffff;
+}
+
+.novidades .destaque {
+    color: #777;
+}
+
+.novidades h2 {
+    margin: 20px 0 25px;
+
+    color: #ffffff;
+
+    font-size: 38px;
+    letter-spacing: 4px;
+}
+
+.novidades-texto {
+    max-width: 650px;
+
+    margin: 0 auto 35px;
+
+    color: #999;
+
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+.botao-instagram {
+    display: inline-block;
+
+    padding: 15px 28px;
+
+    background-color: transparent;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    transition: 0.3s ease;
+}
+
+.botao-instagram:hover {
+    background-color: #ffffff;
+
+    color: #000000;
+}
+
+
+/* ==================================================
+   12. SOBRE
+================================================== */
+
+.sobre {
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background-color: #0a0a0a;
+
+    border-top: 1px solid #222;
+}
+
+.sobre h2 {
+    margin: 20px 0 30px;
+
+    color: #ffffff;
+
+    font-size: 36px;
+    letter-spacing: 3px;
+}
+
+.sobre p:not(.destaque) {
+    max-width: 800px;
+
+    margin: 0 auto 20px;
+
+    color: #ccc;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* ==================================================
+   13. CONTATO
+================================================== */
+
+.contato {
+    padding: 100px 8%;
+
+    text-align: center;
+
+    background-color: #101010;
+
+    border-top: 1px solid #222;
+}
+
+.contato h2 {
+    margin: 20px 0 30px;
+
+    color: #ffffff;
+
+    font-size: 36px;
+    letter-spacing: 3px;
+}
+
+.contato > p:not(.destaque) {
+    max-width: 700px;
+
+    margin: 0 auto 35px;
+
+    color: #ccc;
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.contato-botoes {
+    display: flex;
+    justify-content: center;
+
+    gap: 15px;
+}
+
+.botao-contato {
+    display: inline-block;
+
+    min-width: 145px;
+
+    padding: 15px 25px;
+
+    background-color: transparent;
+
+    border: 1px solid #ffffff;
+
+    color: #ffffff;
+
+    text-decoration: none;
+
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    transition: 0.3s ease;
+}
+
+.botao-contato:hover {
+    background-color: #ffffff;
+
+    color: #000000;
+}
+
+
+/* ==================================================
+   14. RODAPÉ
+================================================== */
+
+.rodape {
+    padding: 60px 20px 30px;
+
+    text-align: center;
+
+    background-color: #050505;
+
+    border-top: 1px solid #222;
+}
+
+.rodape h3 {
+    margin: 0 0 12px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    letter-spacing: 5px;
+}
+
+.rodape-frase {
+    margin: 0 0 30px;
+
+    color: #888;
+
+    font-size: 14px;
+}
+
+.rodape-links {
+    display: flex;
+    justify-content: center;
+
+    gap: 30px;
+
+    margin-bottom: 40px;
+}
+
+.rodape-links a {
+    color: #ffffff;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+    font-size: 12px;
+    letter-spacing: 1px;
+
+    transition: color 0.3s ease;
+}
+
+.rodape-links a:hover {
+    color: #888;
+}
+
+.copyright {
+    margin: 0;
+
+    padding-top: 25px;
+
+    border-top: 1px solid #1c1c1c;
+
+    color: #666;
+
+    font-size: 11px;
+}
+
+
+/* ==================================================
+   15. WHATSAPP FLUTUANTE
+================================================== */
+
+.whatsapp-flutuante {
+    position: fixed;
+
+    right: 25px;
+    bottom: 25px;
+
+    z-index: 999;
+
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 14px 20px;
+
+    background-color: #ffffff;
+
+    border: 1px solid #ffffff;
+
+    color: #000000;
+
+    text-decoration: none;
+
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+
+    transition:
+        background-color 0.3s ease,
+        color 0.3s ease,
+        transform 0.3s ease;
+}
+
+.icone-whatsapp {
+    display: block;
+
+    width: 18px;
+    height: 18px;
+
+    flex-shrink: 0;
+}
+
+.whatsapp-flutuante:hover {
+    background-color: #000000;
+
+    color: #ffffff;
+
+    transform: translateY(-3px);
+}
+
+
+/* ==================================================
+   16. RESPONSIVIDADE — CELULAR
+================================================== */
+
+@media (max-width: 768px) {
+
+    /* CABEÇALHO */
+
+    header {
+        padding: 20px 22px;
+    }
+
+    header h1 {
+        font-size: 20px;
+        letter-spacing: 4px;
+    }
+
+
+    /* MENU */
+
+    .menu-mobile {
+        display: block;
+    }
+
+    header nav {
+        display: none;
+    }
+
+    header nav.ativo {
+        display: flex;
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        gap: 0;
+
+        background-color: #0a0a0a;
+
+        border-top: 1px solid #222;
+        border-bottom: 1px solid #222;
+    }
+
+    header nav.ativo a {
+        width: 100%;
+
+        padding: 18px;
+
+        text-align: center;
+
+        border-bottom: 1px solid #1d1d1d;
+    }
+
+    header nav.ativo a:last-child {
+        border-bottom: none;
+    }
+
+
+    /* BANNER */
+
+    .banner img {
+        width: 100%;
+        height: auto;
+    }
+
+
+    /* APRESENTAÇÃO */
+
+    .apresentacao {
+        padding: 65px 25px;
+    }
+
+    .apresentacao-marca {
+        margin-bottom: 16px;
+
+        font-size: 10px;
+        letter-spacing: 5px;
+    }
+
+    .apresentacao h2 {
+        margin-bottom: 20px;
+
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: 2px;
+    }
+
+    .apresentacao-texto {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    /* LANÇAMENTO */
+
+    .lancamento {
+        padding: 30px 20px;
+    }
+
+    .lancamento span {
+        font-size: 11px;
+        line-height: 1.6;
+        letter-spacing: 3px;
+    }
+
+    .lancamento p {
+        font-size: 13px;
+        line-height: 1.6;
+    }
+
+
+    /* PRODUTOS */
+
+    .secao-produtos {
+        padding: 70px 20px;
+    }
+
+    .secao-produtos h2 {
+        font-size: 28px;
+        line-height: 1.25;
+    }
+
+    .descricao-colecao {
+        margin: -10px auto 35px;
+
+        font-size: 13px;
+        line-height: 1.7;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .produto {
+        width: 100%;
+        max-width: 420px;
+
+        margin: 0 auto;
+    }
+
+    .foto-produto {
+        height: 240px;
+    }
+
+    .produto h3 {
+        margin: 18px 15px 8px;
+    }
+
+    .produto p {
+        margin: 0 15px;
+    }
+
+
+    /* DIFERENCIAIS */
+
+    .diferenciais {
+        grid-template-columns: 1fr;
+
+        gap: 1px;
+
+        padding: 40px 20px;
+    }
+
+    .diferencial {
+        padding: 30px 25px;
+    }
+
+    .diferencial span {
+        margin-bottom: 18px;
+    }
+
+
+    /* NOVIDADES */
+
+    .novidades {
+        padding: 70px 25px;
+    }
+
+    .novidades h2 {
+        font-size: 30px;
+        line-height: 1.2;
+        letter-spacing: 3px;
+    }
+
+    .novidades-texto {
+        font-size: 14px;
+    }
+
+    .botao-instagram {
+        width: 100%;
+        max-width: 280px;
+    }
+
+
+    /* SOBRE */
+
+    .sobre {
+        padding: 70px 25px;
+    }
+
+    .sobre h2 {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .sobre p:not(.destaque) {
+        font-size: 15px;
+        line-height: 1.8;
+    }
+
+
+    /* CONTATO */
+
+    .contato {
+        padding: 70px 25px;
+    }
+
+    .contato h2 {
+        font-size: 30px;
+    }
+
+    .contato-botoes {
+        flex-direction: column;
+
+        width: 100%;
+        max-width: 280px;
+
+        margin: 0 auto;
+    }
+
+    .botao-contato {
+        width: 100%;
+    }
+
+
+    /* WHATSAPP FLUTUANTE */
+
+    .whatsapp-flutuante {
+        right: 15px;
+        bottom: 15px;
+
+        padding: 12px 14px;
+
+        gap: 7px;
+
+        font-size: 9px;
+        letter-spacing: 1.5px;
+    }
+
+    .icone-whatsapp {
+        width: 17px;
+        height: 17px;
+    }
+
+
+    /* RODAPÉ */
+
+    .rodape {
+        padding: 50px 20px 25px;
+    }
+
+    .rodape-links {
+        flex-direction: column;
+
+        gap: 18px;
+    }
+
+    .copyright {
+        line-height: 1.6;
+    }
+}
