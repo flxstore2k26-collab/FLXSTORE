@@ -2,6 +2,19 @@ const botaoMenu = document.getElementById('menu-mobile');
 const menu = document.getElementById('menu-principal');
 const linksMenu = [...document.querySelectorAll('#menu-principal a[href^="#"]')];
 
+// Compatibilidade com abertura local no Windows (file://).
+// Ao abrir os arquivos direto no navegador, links para pastas mostram um índice de diretório.
+// Nesta situação, apontamos explicitamente para os arquivos index.html.
+if (window.location.protocol === 'file:') {
+  document.querySelectorAll('a[href="../"]').forEach((link) => {
+    link.setAttribute('href', '../index.html');
+  });
+
+  document.querySelectorAll('a[href="./"]').forEach((link) => {
+    link.setAttribute('href', 'index.html');
+  });
+}
+
 function fecharMenu() {
   if (!menu || !botaoMenu) return;
   menu.classList.remove('ativo');
