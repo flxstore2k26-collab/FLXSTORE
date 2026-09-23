@@ -1,0 +1,17 @@
+FLX STORE + FLX IMPORTS
+
+COMO ABRIR NO WINDOWS
+1. Extraia o arquivo ZIP antes de abrir.
+2. Entre na pasta FLXSTORE-main.
+3. Dê dois cliques em ABRIR-SITE.bat.
+
+Alternativa: dê dois cliques em index.html.
+
+IMPORTANTE
+- Não abra a pasta arrastando-a para o Chrome. Isso mostra apenas um índice de arquivos.
+- A página principal é index.html.
+- A FLX IMPORTS fica na pasta imports.
+- Para editar, abra a pasta inteira no VS Code.
+
+SITE PUBLICADO
+https://flxstore2k26-collab.github.io/FLXSTORE/
