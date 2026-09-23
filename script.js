@@ -1,121 +1,70 @@
 const botaoMenu = document.getElementById("menu-mobile");
-const menu = document.querySelector("header nav");
-const linksMenu = document.querySelectorAll("header nav a");
-
-// Barra superior que conecta as duas frentes da FLX no mesmo site.
-(function criarNavegacaoFLX() {
-    if (document.querySelector(".flx-network-root")) return;
-
-    const barra = document.createElement("div");
-    barra.className = "flx-network-root";
-    barra.setAttribute("aria-label", "Navegação entre marcas FLX");
-    barra.innerHTML = `
-        <div class="flx-network-root__inner">
-            <span class="flx-network-root__label">FLX</span>
-            <div class="flx-network-root__links">
-                <a class="flx-network-root__link ativo" href="./" aria-current="page">FLX STORE</a>
-                <a class="flx-network-root__link" href="imports/">FLX IMPORTS</a>
-            </div>
-        </div>
-    `;
-
-    document.body.insertBefore(barra, document.body.firstChild);
-
-    const estilos = document.createElement("style");
-    estilos.textContent = `
-        .flx-network-root {
-            position: sticky;
-            top: 0;
-            z-index: 1200;
-            background: #030303;
-            border-bottom: 1px solid #1f1f1f;
-        }
-
-        .flx-network-root__inner {
-            min-height: 42px;
-            padding: 0 6%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 24px;
-            max-width: 1500px;
-            margin: 0 auto;
-        }
-
-        .flx-network-root__label {
-            color: #777;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 4px;
-        }
-
-        .flx-network-root__links {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .flx-network-root__link {
-            min-height: 42px;
-            padding: 0 14px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-left: 1px solid transparent;
-            border-right: 1px solid transparent;
-            color: #777;
-            text-decoration: none;
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            transition: .25s ease;
-        }
-
-        .flx-network-root__link:hover,
-        .flx-network-root__link.ativo {
-            color: #fff;
-            background: #0b0b0b;
-            border-color: #1c1c1c;
-        }
-
-        body > header {
-            top: 42px;
-        }
-
-        @media (max-width: 520px) {
-            .flx-network-root__inner {
-                padding: 0 3%;
-                justify-content: center;
-            }
-
-            .flx-network-root__label {
-                display: none;
-            }
-
-            .flx-network-root__link {
-                padding: 0 10px;
-                font-size: 9px;
-                letter-spacing: 1.3px;
-            }
-        }
-    `;
-    document.head.appendChild(estilos);
-})();
+const menu = document.getElementById("menu-principal");
+const linksMenu = document.querySelectorAll("#menu-principal a[href^='#']");
 
 if (botaoMenu && menu) {
-    botaoMenu.addEventListener("click", function () {
+    botaoMenu.addEventListener("click", () => {
         const aberto = menu.classList.toggle("ativo");
         botaoMenu.setAttribute("aria-expanded", String(aberto));
         botaoMenu.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+        botaoMenu.textContent = aberto ? "×" : "☰";
+    });
+
+    menu.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => {
+            menu.classList.remove("ativo");
+            botaoMenu.setAttribute("aria-expanded", "false");
+            botaoMenu.setAttribute("aria-label", "Abrir menu");
+            botaoMenu.textContent = "☰";
+        });
+    });
+
+    window.addEventListener("resize", () => {
+        if (window.innerWidth > 820) {
+            menu.classList.remove("ativo");
+            botaoMenu.setAttribute("aria-expanded", "false");
+            botaoMenu.setAttribute("aria-label", "Abrir menu");
+            botaoMenu.textContent = "☰";
+        }
     });
 }
 
-linksMenu.forEach(function (link) {
-    link.addEventListener("click", function () {
-        if (menu) menu.classList.remove("ativo");
-        if (botaoMenu) {
-            botaoMenu.setAttribute("aria-expanded", "false");
-            botaoMenu.setAttribute("aria-label", "Abrir menu");
-        }
+const secoes = ["inicio", "colecao", "sobre", "redes", "contato"]
+    .map((id) => document.getElementById(id))
+    .filter(Boolean);
+
+function atualizarMenuAtivo() {
+    const referencia = window.scrollY + 180;
+    let atual = "inicio";
+
+    secoes.forEach((secao) => {
+        if (secao.offsetTop <= referencia) atual = secao.id;
     });
-});
+
+    linksMenu.forEach((link) => {
+        link.classList.toggle("ativo-menu", link.getAttribute("href") === `#${atual}`);
+    });
+}
+
+window.addEventListener("scroll", atualizarMenuAtivo, { passive: true });
+atualizarMenuAtivo();
+
+const elementosReveal = document.querySelectorAll(".reveal");
+
+if ("IntersectionObserver" in window) {
+    const observador = new IntersectionObserver((entradas, observer) => {
+        entradas.forEach((entrada) => {
+            if (entrada.isIntersecting) {
+                entrada.target.classList.add("visible");
+                observer.unobserve(entrada.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    elementosReveal.forEach((elemento) => observador.observe(elemento));
+} else {
+    elementosReveal.forEach((elemento) => elemento.classList.add("visible"));
+}
+
+const anoAtual = document.getElementById("ano-atual");
+if (anoAtual) anoAtual.textContent = String(new Date().getFullYear());
