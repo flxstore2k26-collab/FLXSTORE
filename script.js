@@ -1,6 +1,19 @@
 const botaoMenu = document.getElementById('menu-mobile');
 const menu = document.getElementById('menu-principal');
 
+// Compatibilidade com abertura local no Windows (file://).
+// Em um servidor, "imports/" abre imports/index.html automaticamente.
+// Ao abrir os arquivos direto no navegador, precisamos apontar para o arquivo explicitamente.
+if (window.location.protocol === 'file:') {
+  document.querySelectorAll('a[href="imports/"]').forEach((link) => {
+    link.setAttribute('href', 'imports/index.html');
+  });
+
+  document.querySelectorAll('a[href="./"]').forEach((link) => {
+    link.setAttribute('href', 'index.html');
+  });
+}
+
 function fecharMenu() {
   if (!menu || !botaoMenu) return;
   menu.classList.remove('ativo');
