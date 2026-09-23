@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://flxstore2k26-collab.github.io/FLXSTORE/sitemap.xml
