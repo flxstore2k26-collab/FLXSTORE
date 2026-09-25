@@ -1,49 +1,40 @@
-const botaoMenu = document.getElementById('menu-mobile');
+const toggle = document.getElementById('menu-mobile');
 const menu = document.getElementById('menu-principal');
+const desktop = window.matchMedia('(min-width: 841px)');
 
-// Compatibilidade com abertura local no Windows (file://).
-// Em um servidor, "imports/" abre imports/index.html automaticamente.
-// Ao abrir os arquivos direto no navegador, precisamos apontar para o arquivo explicitamente.
+// O mesmo pacote pode ser aberto diretamente pelo index.html no Windows.
 if (window.location.protocol === 'file:') {
   document.querySelectorAll('a[href="imports/"]').forEach((link) => {
-    link.setAttribute('href', 'imports/index.html');
+    link.href = 'imports/index.html';
   });
-
   document.querySelectorAll('a[href="./"]').forEach((link) => {
-    link.setAttribute('href', 'index.html');
+    link.href = 'index.html';
   });
 }
 
-function fecharMenu() {
-  if (!menu || !botaoMenu) return;
-  menu.classList.remove('ativo');
-  botaoMenu.setAttribute('aria-expanded', 'false');
-  botaoMenu.setAttribute('aria-label', 'Abrir menu');
-  botaoMenu.textContent = '☰';
-}
-
-if (botaoMenu && menu) {
-  botaoMenu.addEventListener('click', () => {
-    const aberto = menu.classList.toggle('ativo');
-    botaoMenu.setAttribute('aria-expanded', String(aberto));
-    botaoMenu.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
-    botaoMenu.textContent = aberto ? '×' : '☰';
+if (toggle && menu) {
+  function closeMenu(returnFocus = false) {
+    menu.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menu');
+    if (returnFocus) toggle.focus();
+  }
+  toggle.addEventListener('click', () => {
+    const open = menu.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
   });
-
-  menu.querySelectorAll('a').forEach((link) => {
-    link.addEventListener('click', fecharMenu);
+  menu.addEventListener('click', (event) => {
+    if (event.target.closest('a')) closeMenu();
   });
-
   document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') fecharMenu();
+    if (event.key === 'Escape' && menu.classList.contains('is-open')) closeMenu(true);
   });
-
-  window.addEventListener('resize', () => {
-    if (window.innerWidth > 900) fecharMenu();
+  document.addEventListener('click', (event) => {
+    if (menu.classList.contains('is-open') && !menu.contains(event.target) && !toggle.contains(event.target)) closeMenu();
   });
+  desktop.addEventListener('change', (event) => { if (event.matches) closeMenu(); });
 }
 
-const anoAtual = document.getElementById('ano-atual');
-if (anoAtual) {
-  anoAtual.textContent = String(new Date().getFullYear());
-}
+const currentYear = document.getElementById('ano-atual');
+if (currentYear) currentYear.textContent = String(new Date().getFullYear());
